@@ -12,31 +12,31 @@ Rules&Regulations:
 Characters Card:
   * John - the one who travel back in time.
       Mission - Kill the Prime Minister
-      Special feature: Assassinate
+      Special power: Assassinate
           * Can only kill when you have an Assassinate card.
           * If you kill the wrong person, you will go to jail. (suspense for 1 turn)
   * Police Officer - Is the only person who can catch john.
                     If you catch the wrong person you will be in jail.(aka suspense for 1 turn)
   * Prime Minister - Try not to get kill. Lol.
       * You can get Mercenary card for 3 Gold.
-  * Citizen - normal citizen who will witness everything that's happening.
+  * Citizen - normal citizen who will witness everything that's happening. (no special power)
 
 
 Action Card:
-  * Steal - steal a card
+  * Steal - steal a card from other player
   * Deny - Deny stealing
-  * Gold - money
+  * Gold - money (there are 2 types of Gold)
     * Gold x1
     * Gold x2
   * Investigate (consist of many types of questions):
       * Ask if the person's name has an alphabet a, b, c, ... ,z (choose one)
-      * Ask for the last letter of the person's name
-      *
+      * Ask for the last letter of the character's name
+      * etc.
 
 
-Special cards:
+Special cards (combination from Action Card):
   * Assassinate - kill (Steal x1, Gold x5)
-  * Mercenary - can be hired to give protection to the player for 1 turn (Price: Gold = 4)
+  * Mercenary - can be hired to give protection to the player for 1 turn (Price: Gold x4)
   * Confess - The person has to confess his real identity. (Investigate x2, Gold x5)
 
 
