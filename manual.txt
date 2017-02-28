@@ -38,8 +38,3 @@ Special cards (combination from Action Card):
   * Assassinate - kill (Steal x1, Gold x5)
   * Mercenary - can be hired to give protection to the player for 1 turn (Price: Gold x4)
   * Confess - The person has to confess his real identity. (Investigate x2, Gold x5)
-
-
-Cards Combination:
-  * Steal + deny + investigate = Assassinate
-  * 3 Investigate cards = Confess
