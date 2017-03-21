@@ -1,0 +1,46 @@
+Time Travel?
+You have travel to the past to change the mistake that you made.
+--> kill the prime minister
+Try to complete the mission and not get caught!
+
+
+
+Rules&Regulations:
+  * in your turn, either draw a card from the deck or use your card.
+  * If you are in jail, you can either pay 5 Gold or wait until you're out of the jail.
+  * Game ends when either John or the PM die.
+
+
+Characters Card:
+  * John - the one who travel back in time.
+      Mission - Kill the Prime Minister
+      Special power: Assassinate
+          * Can only kill when you have an Assassinate card.
+          * If you kill the wrong person, you will go to jail. (suspense for 1 turn)
+  * Police Officer - Is the only person who can catch people into jail. (role is to help PM to kill john but he himself cant kill)
+                    If you catch the wrong person you will be in jail.(aka suspense for 1 turn)
+  * Prime Minister - Try not to get kill. Lol.
+      * You can get Mercenary card for 3 Gold.
+          * either protect yourself
+          * or kill john
+  * Citizen - normal citizen who will witness everything that's happening.
+      * Special power: make the game more fun
+
+
+Action Card:
+  * Steal - steal a card from other player
+  * Deny - Deny stealing
+  * Gold - money (there are 2 types of Gold)
+    * Gold x1
+    * Gold x2
+  * Investigate (consist of many types of questions):
+      * Ask if the person's character's name has an alphabet a, b, c, ... ,z (the letter will be random)
+      * Ask for the last letter of the character's name
+
+
+Special cards (not in the deck, can only get when combine action cards):
+  * Assassinate - kill (Steal x1, Gold x6)
+  * Mercenary (2 types)
+      * Protector - can be hired to give protection to the player for 1 turn (Price: Gold x4)
+      * Killer - can be hired to kill (Price: Gold x8)
+  * Bribe to confess - The person has to confess his real identity. (Investigate x1, Gold x10)
