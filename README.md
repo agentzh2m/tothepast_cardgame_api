@@ -12,37 +12,41 @@
 
 ---
 
-[POST] `user/login`
+[POST] `users/login`
 
 <- {email, password}
 
 -> {status: success/fail, user: Object}
 
-[GET] `user/whoami`
+[GET] `users/whoami`
 
 -> {status, user: Object}
 
-[POST] `user/register`
+[POST] `users/register`
 
 <- {email, password, name}
 
 -> {status: success/fail}
 
-[POST] `room/join`
+[POST] `rooms.json`
+<- {room_name}
+-> {status: success/fail}
+
+[POST] `rooms/join`
 
 <- {email, room_id, ...}
 
 -> {status: success/fail}
 
-[GET] `room/exit`
+[GET] `rooms/exit`
 
 -> {status: success/fail}
 
-[GET] `room`
+[GET] `rooms.json`
 
 -> [{room_name, room_id, user_in_room}]
 
-[GET] `room/:id`
+[GET] `rooms/:id.json`
 
 -> {room_name, room_id, users}
 

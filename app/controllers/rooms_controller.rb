@@ -44,6 +44,28 @@ class RoomsController < ApplicationController
     end
   end
 
+  def ready
+    if @current_user.player.nil?
+      render json: {status: 'fail'}
+    @current_user.player.status = 'ready'
+    if @current_user.save
+      render json: {status: 'success'}
+    else
+      render json: {status: 'fail'}
+    end
+  end
+
+  def unready
+    if @current_user.player.nil?
+      render json: {status: 'fail'}
+    @current_user.player.status = nil
+    if @current_user.save
+      render json: {status: 'success'}
+    else
+      render json: {status: 'fail'}
+    end
+  end
+
   # POST /rooms
   # POST /rooms.json
   def create
@@ -53,10 +75,10 @@ class RoomsController < ApplicationController
     respond_to do |format|
       if @room.save && @current_user.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render :show, status: :created, location: @room }
+        format.json { render :show, status: 'success', location: @room }
       else
         format.html { render :new }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.json { render json: @room.errors, status: 'fail' }
       end
     end
   end
