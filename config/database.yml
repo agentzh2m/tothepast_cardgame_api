@@ -13,17 +13,17 @@ default: &default
 
 development:
   <<: *default
-  database: tothepast_api
+  database: tothepast-api_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tothepast_api_test
+  database: tothepast-api_test
 
 production:
   <<: *default
-  database: tothepast_api_production
-  username: tothepast_api
-  password: <%= ENV['TOTHEPAST-API_DATABASE_PASSWORD'] %>
+  database: tothepast-api_production
+  username: tothepast-api
+  password: <%= ENV['tothepast-API_DATABASE_PASSWORD'] %>
