@@ -4,14 +4,14 @@ class UsersController < ApplicationController
   respond_to :json
 
   def whoami
-    render json: { success: true }
+    render json: { success: true, user: @current_user }
   end
 
   def login
     user = User.find_by_email(params[:user][:email])
     if user.valid_password?(params[:password])
       cookies[:user_jwt] = { value: user.generate_jwt, http_only: true }
-      render json: { success: true }
+      render json: { success: true, user: user }
     else
       render json: { success: false }, status: :unauthorized
     end
