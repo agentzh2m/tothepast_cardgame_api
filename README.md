@@ -12,15 +12,15 @@
 
 ---
 
-[POST] `auth/login`
+[POST] `user/login`
 
 <- {email, password}
 
--> {status: success/fail}
+-> {status: success/fail, user: Object}
 
-[GET] `auth/whoami`
+[GET] `user/whoami`
 
--> {email, ...}
+-> {status, user: Object}
 
 [POST] `user/register`
 
@@ -31,6 +31,10 @@
 [POST] `room/join`
 
 <- {email, room_id, ...}
+
+-> {status: success/fail}
+
+[GET] `room/exit`
 
 -> {status: success/fail}
 

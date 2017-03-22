@@ -17,6 +17,7 @@
 #  last_sign_in_ip        :inet
 #  name                   :text
 #  status                 :text
+#  room_id                :integer
 #
 
 class User < ApplicationRecord
@@ -26,16 +27,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :cards
-  has_one :user
-  # belongs_to :room
+  has_one :player
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   def generate_jwt(exp=30.minutes.from_now.to_i)
-
       JwtAuth.generate_jwt({exp: exp, user_id: self.id})
   end
+
+
 
 
 end

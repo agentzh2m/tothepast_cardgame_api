@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @users = User.where(room_id: @room.id)
   end
 
   # GET /rooms/new
@@ -17,14 +18,40 @@ class RoomsController < ApplicationController
     @room = Room.new
   end
 
+  def join
+    room = Room.find(params[:id])
+    if @current_user.room_id.nil?
+      @current_user.room_id  = room_id
+      if !room.nil && @current_user.save
+        Player.create(user: @current_user, room: room)
+        render json: {status: 'success'}
+      end
+    end
+
+    render json: {status: 'fail'}
+  end
+
+  def exit
+    @current_user.room_id = nil
+    if @current_user.save
+      Player.find_by(user_id: @current_user.id).destroy
+      if Player.where(room_id: @room).size == 0
+        @room.destroy
+      end
+      render json: {status: 'success'}
+    else
+      render json: {status: 'fail'}
+    end
+  end
+
   # POST /rooms
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-    @room.user = @current_user
+    @current_user.room = @room
 
     respond_to do |format|
-      if @room.save
+      if @room.save && @current_user.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
