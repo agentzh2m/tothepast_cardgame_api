@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /rooms
   # GET /rooms.json
@@ -27,7 +28,6 @@ class RoomsController < ApplicationController
         render json: {status: 'success'}
       end
     end
-
     render json: {status: 'fail'}
   end
 
@@ -36,9 +36,8 @@ class RoomsController < ApplicationController
     if @current_user.save
       Player.find_by(user_id: @current_user.id).destroy
       if Player.where(room_id: @room).size == 0
-        @room.destroy
+        destroy
       end
-      render json: {status: 'success'}
     else
       render json: {status: 'fail'}
     end
@@ -47,6 +46,7 @@ class RoomsController < ApplicationController
   def ready
     if @current_user.player.nil?
       render json: {status: 'fail'}
+    end
     @current_user.player.status = 'ready'
     if @current_user.save
       render json: {status: 'success'}
@@ -58,6 +58,7 @@ class RoomsController < ApplicationController
   def unready
     if @current_user.player.nil?
       render json: {status: 'fail'}
+    end
     @current_user.player.status = nil
     if @current_user.save
       render json: {status: 'success'}
@@ -70,6 +71,7 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
+    @room.status = "waiting"
     @current_user.room = @room
 
     respond_to do |format|
