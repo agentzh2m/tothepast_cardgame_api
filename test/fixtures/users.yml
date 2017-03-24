@@ -17,6 +17,7 @@
 #  last_sign_in_ip        :inet
 #  name                   :text
 #  status                 :text
+#  room_id                :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

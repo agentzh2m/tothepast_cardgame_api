@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322103600) do
+ActiveRecord::Schema.define(version: 20170322131727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20170322103600) do
     t.boolean  "isTurn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "room_id"
+    t.index ["room_id"], name: "index_players_on_room_id", using: :btree
     t.index ["user_id"], name: "index_players_on_user_id", using: :btree
   end
 
@@ -67,5 +69,6 @@ ActiveRecord::Schema.define(version: 20170322103600) do
     t.index ["room_id"], name: "index_users_on_room_id", using: :btree
   end
 
+  add_foreign_key "players", "rooms"
   add_foreign_key "users", "rooms"
 end
