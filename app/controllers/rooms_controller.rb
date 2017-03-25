@@ -22,21 +22,23 @@ class RoomsController < ApplicationController
     room = Room.find(params[:id])
     if @current_user.room_id.nil?
       @current_user.room_id  = room_id
-      if !room.nil && @current_user.save
-        Player.create(user: @current_user, room: room)
-        render json: {status: 'success'}
+      if @current_user.save
+        render json: {status: 'success', room: room}
       end
     end
     render json: {status: 'fail'}
   end
 
   def exit
+    room = Room.find(@current_user.room_id)
     @current_user.room_id = nil
     if @current_user.save
-      Player.find_by(user_id: @current_user.id).destroy
-      if Player.where(room_id: @room).size == 0
-        destroy
+      msg = 'exit room normally'
+      if room.users.size == 0
+        msg = 'there is no one in the room destroy the room also'
+        room.destroy
       end
+      render json: {status: 'success', msg: msg}
     else
       render json: {status: 'fail'}
     end
@@ -80,7 +82,7 @@ class RoomsController < ApplicationController
         @current_user.room_id = @room.id
         @current_user.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render json: {room_name: @room.name, room_user: @room.users } }
+        format.json { render json: {room_name: @room.name, room_user: @room.users, room_status: @room.status } }
       else
         format.html { render :new }
         format.json { render json: @room.errors, status: 'fail' }
