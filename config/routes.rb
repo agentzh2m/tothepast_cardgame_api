@@ -10,10 +10,9 @@ Rails.application.routes.draw do
   post "users/register"
 
   #lobby operation
-  post "rooms/join"
-  get "rooms/exit"
-  get "rooms/ready"
-  get "rooms/unready"
+  get "lobby/join/:id", to: 'lobby#join' 
+  get "lobby/exit"
+  get "lobby/ready"
+  get "lobby/unready"
 
-  
 end
