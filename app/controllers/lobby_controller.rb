@@ -56,6 +56,10 @@ class LobbyController < ApplicationController
     end
   end
 
+  def current_user_ready
+    render json: {user_status: @current_user.user.status}
+  end
+
   def check_allready
     if !@current_user.room_id.nil?
       room = Room.find(@current_user.room_id)

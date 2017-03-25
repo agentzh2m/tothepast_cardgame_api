@@ -18,17 +18,18 @@ Character.create!(name: 'Tom the Citizen', description: 'You are a clueless citi
 you either stay neutral or bias up to you!!!')
 
 # Add Normal Cards
-steal = Card.create!(name: 'Steal', description: 'steal a card from other player')
-deny = Card.create!(name: 'Deny', description: 'deny any action card from other player')
+Card.create!(name: 'Steal', description: 'steal a card from other player')
+Card.create!(name: 'Deny', description: 'deny any action card from other player')
 Card.create!(name: 'Gold', description: 'add 2 coins')
 Card.create!(name: 'Silver', description: 'add 1 coins')
 
 
 # Add special card
-assasinate = Card.create!(name: 'Assassinate',
+SpecialCard.create!(name: 'Assassinate',
 description: 'kill the targeted user and suspend them for two round', cost: 6)
-Card.create!(name: 'Protector',
+SpecialCard.create!(name: 'Protector',
 description: 'can be hired to protect the player for one turn', cost: 4)
-Card.create!(name: 'Killer', 'hire an assassin to kill for you', cost: 8)
-confess = Card.create!(name: 'Confess', 'force a person to confess his real indentity',
-cost: 10)
+SpecialCard.create!(name: 'Killer',
+description: 'hire an assassin to kill for you', cost: 8)
+SpecialCard.create!(name: 'Confess',
+description: 'force a person to confess his real indentity',cost: 10)
