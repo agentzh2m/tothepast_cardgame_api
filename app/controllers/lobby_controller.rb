@@ -48,7 +48,7 @@ class LobbyController < ApplicationController
     if @current_user.status.nil?
       render json: {status: 'fail'}
     end
-    @current_user.status = nil
+    @current_user.status = 'unready'
     if @current_user.save
       render json: {status: 'success'}
     else
@@ -56,14 +56,14 @@ class LobbyController < ApplicationController
     end
   end
 
-  def current_user_ready
-    render json: {user_status: @current_user.user.status}
-  end
 
   def check_allready
     if !@current_user.room_id.nil?
       room = Room.find(@current_user.room_id)
-      state = room.users.to_a.select{|u| u.status == 'ready'}
+      state = room.users.to_a.map{|u| u.status == 'ready'}
+      if state.size == 4
+        room.users.to_a.map{ |u| Player.create(user: u)}
+      end
       render json: {status: 'success', is_all_ready: state.size == 4, ready_users: state}
     else
       render json: {status: 'fail'}
