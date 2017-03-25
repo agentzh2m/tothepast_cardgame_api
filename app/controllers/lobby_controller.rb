@@ -18,6 +18,7 @@ class LobbyController < ApplicationController
   def exit
     room = Room.find(@current_user.room_id)
     @current_user.room_id = nil
+    @current_user.status = nil
     if @current_user.save
       msg = 'exit room normally'
       if room.users.size == 0
@@ -34,7 +35,7 @@ class LobbyController < ApplicationController
     if @current_user.status.nil?
       render json: {status: 'fail'}
     end
-    @current_user.status.status = 'ready'
+    @current_user.status = 'ready'
     if @current_user.save
       render json: {status: 'success'}
     else
@@ -49,6 +50,16 @@ class LobbyController < ApplicationController
     @current_user.status = nil
     if @current_user.save
       render json: {status: 'success'}
+    else
+      render json: {status: 'fail'}
+    end
+  end
+
+  def check_allready
+    if !@current_user.room_id.nil?
+      room = Room.find(@current_user.room_id)
+      state = room.users.to_a.select{|u| u.status == 'ready'}
+      render json: {status: 'success', is_all_ready: state.size == 4, ready_users: state}
     else
       render json: {status: 'fail'}
     end

@@ -32,13 +32,13 @@
 <- {room_name}
 -> {status: success/fail}
 
-[POST] `rooms/join`
+[GET] `lobby/join/:id`
 
-<- {email, room_id, ...}
+<- {room_id, ...}
 
 -> {status: success/fail}
 
-[GET] `rooms/exit`
+[GET] `lobby/exit`
 
 -> {status: success/fail}
 
@@ -50,15 +50,15 @@
 
 -> {room_name, room_id, users}
 
-[GET] `user/ready`
+[GET] `lobby/ready`
 
 -> {status: success/fail}
 
-[GET] `user/unready`
+[GET] `lobby/unready`
 
 -> {status: success/fail}
 
-[GET] `room/check_ready`
+[GET] `lobby/check_ready`
 
 -> {status: all_ready/not_all_ready}
 

@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
         @current_user.status = 'unready'
         @current_user.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render json: {room_name: @room.name, room_user: @room.users, room_status: @room.status } }
+        format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :new }
         format.json { render json: @room.errors, status: 'fail' }
