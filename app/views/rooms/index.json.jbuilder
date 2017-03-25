@@ -1,1 +1,4 @@
-json.array! @rooms, partial: 'rooms/room', as: :room
+json.rooms @rooms do |room|
+  json.room_name room.name
+  json.room_users room.users
+end

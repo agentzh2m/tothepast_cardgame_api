@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by_email(params[:user][:email])
-    if user.valid_password?(params[:user][:password])
+    if User.exists?(email: params[:user][:email]) && user.valid_password?(params[:user][:password])
       cookies[:user_jwt] = { value: user.generate_jwt, http_only: true }
       render json: { success: true, user: user }
     else

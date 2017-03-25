@@ -26,7 +26,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :cards
   has_one :player
 
   # Include default devise modules. Others available are:

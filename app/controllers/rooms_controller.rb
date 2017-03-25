@@ -11,7 +11,6 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
-    @users = User.where(room_id: @room.id)
   end
 
   # GET /rooms/new
@@ -72,12 +71,16 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     @room.status = "waiting"
-    @current_user.room = @room
-
     respond_to do |format|
-      if @room.save && @current_user.save
+      if(!@current_user.room_id.nil?)
+        format.html { render :new }
+        format.json { render json: {status: 'fail', message: 'need to exit room before creating a new one'} }
+      end
+      if @room.save
+        @current_user.room_id = @room.id
+        @current_user.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render :show, status: 'success', location: @room }
+        format.json { render json: {room_name: @room.name, room_user: @room.users } }
       else
         format.html { render :new }
         format.json { render json: @room.errors, status: 'fail' }
