@@ -1,12 +1,14 @@
 # == Schema Information
 #
-# Table name: cards
+# Table name: special_cards
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  image      :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  cards_id    :integer
+#  cost        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'test_helper'

@@ -7,6 +7,7 @@ class LobbyController < ApplicationController
     room = Room.find(params[:id])
     if @current_user.room_id.nil?
       @current_user.room_id  = room.id
+      @current_user.status = 'unready'
       if @current_user.save
         render json: {status: 'success', room: room}
       end

@@ -1,7 +1,26 @@
+# == Schema Information
+#
+# Table name: special_cards
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  cards_id    :integer
+#  cost        :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  card: one
+  name: MyString
+  description: MyText
+  cards: one
+  cost: 1
 
 two:
-  card: two
+  name: MyString
+  description: MyText
+  cards: two
+  cost: 1

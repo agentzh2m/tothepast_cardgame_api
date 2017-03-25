@@ -33,14 +33,10 @@ Action Card:
   * Gold - money (there are 2 types of Gold)
     * Gold x1
     * Gold x2
-  * Investigate (consist of many types of questions):
-      * Ask if the person's character's name has an alphabet a, b, c, ... ,z (the letter will be random)
-      * Ask for the last letter of the character's name
 
 
 Special cards (not in the deck, can only get when combine action cards):
   * Assassinate - kill (Steal x1, Gold x6)
-  * Mercenary (2 types)
-      * Protector - can be hired to give protection to the player for 1 turn (Price: Gold x4)
-      * Killer - can be hired to kill (Price: Gold x8)
-  * Bribe to confess - The person has to confess his real identity. (Investigate x1, Gold x10)
+  * Protector - can be hired to give protection to the player for 1 turn (Price: Gold x4)
+  * Killer - can be hired to kill (Price: Gold x8)
+  * Confess - The person has to confess his real identity. (Investigate x1, Gold x10)

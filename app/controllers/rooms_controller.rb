@@ -28,16 +28,17 @@ class RoomsController < ApplicationController
       if(!@current_user.room_id.nil?)
         format.html { render :new }
         format.json { render json: {status: 'fail', message: 'need to exit room before creating a new one'} }
-      end
-      if @room.save
-        @current_user.room_id = @room.id
-        @current_user.status = 'unready'
-        @current_user.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render :show, status: :ok, location: @room }
       else
-        format.html { render :new }
-        format.json { render json: @room.errors, status: 'fail' }
+        if @room.save
+          @current_user.room_id = @room.id
+          @current_user.status = 'unready'
+          @current_user.save
+          format.html { redirect_to @room, notice: 'Room was successfully created.' }
+          format.json { render :show, status: :ok, location: @room }
+        else
+          format.html { render :new }
+          format.json { render json: @room.errors, status: 'fail' }
+        end
       end
     end
   end

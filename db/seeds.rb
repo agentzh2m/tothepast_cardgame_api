@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# Add Base Characters
+
+Character.create!(name: 'Altair', description: 'You are the one that travel back in time to kill the prime minister')
+Character.create!(name: 'Hank The Detective', description: 'You have the authority to put people in JAIL!!
+find out who is the real threat to the prime minister')
+Character.create!(name: 'Mr.Thatcher The Prime Minister', description: 'You are the most powerful person in the country
+therefore someone is targeting your life you must eliminate that threat')
+Character.create!(name: 'Tom the Citizen', description: 'You are a clueless citizen that might know about the iminent threat
+you either stay neutral or bias up to you!!!')
+
+# Add Normal Cards
+steal = Card.create!(name: 'Steal', description: 'steal a card from other player')
+deny = Card.create!(name: 'Deny', description: 'deny any action card from other player')
+Card.create!(name: 'Gold', description: 'add 2 coins')
+Card.create!(name: 'Silver', description: 'add 1 coins')
+
+
+# Add special card
+assasinate = Card.create!(name: 'Assassinate',
+description: 'kill the targeted user and suspend them for two round', cost: 6)
+Card.create!(name: 'Protector',
+description: 'can be hired to protect the player for one turn', cost: 4)
+Card.create!(name: 'Killer', 'hire an assassin to kill for you', cost: 8)
+confess = Card.create!(name: 'Confess', 'force a person to confess his real indentity',
+cost: 10)
