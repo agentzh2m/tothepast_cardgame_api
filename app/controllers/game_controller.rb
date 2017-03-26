@@ -19,7 +19,7 @@ class GameController < ApplicationController
   def turn_state
     room = Room.find(@current_user.room_id)
     if room.status == 'playing'
-      players = room.players
+      players = room.users.map{|u| u.player}
       check_turn = is_my_turn(room, @current_user)
       p_state = players.select{|p| @current_user.player != p}
       p_state = p_state.map{|p| {
