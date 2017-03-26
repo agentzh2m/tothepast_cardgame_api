@@ -44,7 +44,7 @@ class LobbyController < ApplicationController
       if state.size == 4
         players = room.users.to_a.map{ |u| Player.create(user: u)}
         rand = Random.new(1234)
-        characters = Characters.all.to_a
+        characters = Character.all.to_a
         players.to_a.each_with_index do |p, i|
           p.seqid = i
           0.upto(3) do |_|
