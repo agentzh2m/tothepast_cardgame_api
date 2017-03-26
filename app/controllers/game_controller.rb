@@ -31,7 +31,7 @@ class GameController < ApplicationController
       }}
       # p_turn = players.select{|p| room.turn_counter % 4 == p.seqid}.first
       render json: {
-        is_my_turn: check_turn, 
+        is_my_turn: check_turn,
         my_card: @current_user.player.card,
         my_character: @current_user.player.character_name,
         other_player_state: p_state
@@ -56,7 +56,7 @@ class GameController < ApplicationController
     rand = Random.new(1234)
     if room.status == 'playing' && is_my_turn(room, @current_user)
       player = @current_user.player
-      player.card.push(Card.find(rand(1..Card.count)))
+      player.card.push(Card.find(rand(1..Card.count)).name)
       if player.save
         render json: {status: 'success'}
       else
