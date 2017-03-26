@@ -28,7 +28,7 @@ class GameController < ApplicationController
         num_card: p.card.size
       }}
       # p_turn = players.select{|p| room.turn_counter % 4 == p.seqid}.first
-      render json: {is_my_turn: check_turn, my_card: @current_user.card, other_player_state: p_state }
+      render json: {is_my_turn: check_turn, my_card: @current_user.player.card, other_player_state: p_state }
     else
       render json: {status: 'fail'}, status: :bad_request
     end
