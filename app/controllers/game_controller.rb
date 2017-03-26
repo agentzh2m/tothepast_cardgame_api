@@ -35,7 +35,7 @@ class GameController < ApplicationController
         my_card: @current_user.player.card,
         my_character: @current_user.player.character_name,
         other_player_state: p_state,
-        my_gold: @current_user.play.gold
+        my_gold: @current_user.player.gold
       }
     else
       render json: {status: 'fail'}, status: :bad_request
