@@ -54,6 +54,7 @@ class LobbyController < ApplicationController
             render json: {status: 'success'}
           else
             render json: {status: 'fail', msg: 'cannot save the player state'}, status: :bad_request
+          end 
         end
         room.users.each do |u|
           u.status = 'playing'
