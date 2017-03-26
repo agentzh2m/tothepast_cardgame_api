@@ -39,7 +39,7 @@ class LobbyController < ApplicationController
     @current_user.status = 'ready'
     if @current_user.save
       room = Room.find(@current_user.room_id)
-      state = room.users.to_a.map{|u| u.status == 'ready'}
+      state = room.users.select{|u| u.status == 'ready'}
       room.turn_counter = 0
       if state.size == 4
         players = room.users.to_a.map{ |u| Player.create(user: u)}
@@ -53,7 +53,7 @@ class LobbyController < ApplicationController
           p.save
         end
         room.users.each do |u|
-          u.status = nil
+          u.status = 'playing'
           u.save
         end
       end

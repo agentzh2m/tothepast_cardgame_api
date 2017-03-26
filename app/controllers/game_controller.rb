@@ -13,6 +13,7 @@ class GameController < ApplicationController
 
   def is_my_turn(room, user)
     room.turn_counter % 4 == user.player.seqid
+  end
 
   # find who turn it is
   def turn_state
@@ -75,7 +76,6 @@ class GameController < ApplicationController
     else
       render json: {status: 'fail', msg: 'you are not playing'}, status: :bad_request
     end
-  end
   end
 
 end
