@@ -24,7 +24,7 @@ class GameController < ApplicationController
       p_state = players.select{|p| @current_user.player != p}
       p_state = p_state.map{|p| {
         name: User.find(p.user_id).name,
-        uid: p.user_id
+        uid: p.user_id,
         seqid: p.seqid,
         is_turn: room.turn_counter % 4 == p.seqid,
         num_card: p.card.size
