@@ -34,7 +34,7 @@ class GameController < ApplicationController
         is_my_turn: check_turn,
         my_card: @current_user.player.card,
         my_character: @current_user.player.character_name,
-        other_player_state: p_state
+        other_player_state: p_state,
         my_gold: @current_user.play.gold
       }
     else
