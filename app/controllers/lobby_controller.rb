@@ -51,10 +51,10 @@ class LobbyController < ApplicationController
           end
           p.save
         end
-        room.users.each do |u|
-          u.status = 'playing'
-          u.save
-        end
+        # room.users.each do |u|
+        #   u.status = 'playing'
+        #   u.save
+        # end
         room.status = 'playing'
         room.save
       end
