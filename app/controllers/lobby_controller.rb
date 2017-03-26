@@ -44,11 +44,13 @@ class LobbyController < ApplicationController
       if state.size == 4
         players = room.users.to_a.map{ |u| Player.create(user: u)}
         rand = Random.new(1234)
+        characters = Characters.all.to_a
         players.to_a.each_with_index do |p, i|
           p.seqid = i
           0.upto(3) do |_|
             p.card.push(Card.find(rand(1..Card.count)).name)
           end
+          p.characters = characters.pop
           p.save
         end
         # room.users.each do |u|

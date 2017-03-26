@@ -48,7 +48,7 @@ class GameController < ApplicationController
   def draw_card
     room = Room.find(@current_user.room_id)
     rand = Random.new(1234)
-    if room.status == 'playing' && is_my_turn(room, user)
+    if room.status == 'playing' && is_my_turn(room, @current_user)
       player = @current_user.player
       player.card.push(Card.find(rand(1..Card.count)))
       if player.save
