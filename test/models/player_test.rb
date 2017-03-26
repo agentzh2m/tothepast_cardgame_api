@@ -12,6 +12,7 @@
 #  card           :string           default("{}"), is an Array
 #  seqid          :integer
 #  character_name :string
+#  is_draw        :boolean
 #
 
 require 'test_helper'

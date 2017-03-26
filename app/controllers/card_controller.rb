@@ -23,6 +23,8 @@ class CardController < ApplicationController
       end
     elsif card_name == 'Deny'
       if remove_card(@current_user, 'Deny')
+        print '---'
+      end
       print 'Deny'
     elsif card_name == 'Gold'
       if remove_card(@current_user, 'Gold')
@@ -31,6 +33,7 @@ class CardController < ApplicationController
         render json: {status: 'success'}
       else
         render json: {status: 'fail', msg: 'cannot find card'}, status: :bad_request
+      end
     elsif card_name == 'Silver'
       if remove_card(@current_user, 'Silver')
         @current_user.player.gold = @current_user.player.gold + 1
@@ -40,8 +43,10 @@ class CardController < ApplicationController
       end
     else
       render json: {status: 'fail', msg: 'there is no card'}, status: :bad_request
+    end
   end
 
   def buy
+  end
 
 end
