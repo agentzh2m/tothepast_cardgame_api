@@ -35,6 +35,7 @@ class GameController < ApplicationController
         my_card: @current_user.player.card,
         my_character: @current_user.player.character_name,
         other_player_state: p_state
+        my_gold: @current_user.play.gold
       }
     else
       render json: {status: 'fail'}, status: :bad_request
@@ -44,7 +45,7 @@ class GameController < ApplicationController
   def end_turn
     room = Room.find(@current_user.room_id)
     room.turn_counter = room.turn_counter + 1
-    if room.status == 'playing' && is_my_turn(room, user) && room.save
+    if room.status == 'playing' && is_my_turn(room, @current_user) && room.save
       @current_user.player.is_draw = false
       @current_user.player.save
       render json: {status: 'success'}
