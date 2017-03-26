@@ -67,6 +67,7 @@ class GameController < ApplicationController
       room.users do |u|
         u.player.destroy
         u.player = nil
+        u.player.save
         u.status = 'unready'
         u.save
       end
