@@ -23,7 +23,8 @@ class GameController < ApplicationController
       check_turn = is_my_turn(room, @current_user)
       p_state = players.select{|p| @current_user.player != p}
       p_state = p_state.map{|p| {
-        name: User.find(p.user_id),
+        name: User.find(p.user_id).name,
+        seqid: p.seqid,
         is_turn: room.turn_counter % 4 == p.seqid,
         num_card: p.card.size
       }}

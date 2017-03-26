@@ -34,7 +34,7 @@ class LobbyController < ApplicationController
 
   def ready
     if @current_user.status.nil?
-      render json: {status: 'fail'}
+      render json: {status: 'fail'}, :bad_request
     end
     @current_user.status = 'ready'
     if @current_user.save
@@ -47,10 +47,13 @@ class LobbyController < ApplicationController
         rand = Random.new(1234)
         players.each_with_index do |p, i|
           p.seqid = i
-          0.upto(3) do |i|
+          0.upto(3) do |_|
             p.card.push(Card.find(rand(1..Card.count)))
           end
-          p.save
+          if p.save
+            render json: {status: 'success'}
+          else
+            render json: {status: 'fail', msg: 'cannot save the player state'}
         end
         room.users.each do |u|
           u.status = 'playing'
