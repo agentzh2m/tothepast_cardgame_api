@@ -26,4 +26,4 @@ production:
   <<: *default
   database: tothepast-api_production
   username: tothepast-api
-  password: <%= ENV['tothepast-API_DATABASE_PASSWORD'] %>
+  password: ilovetohack
