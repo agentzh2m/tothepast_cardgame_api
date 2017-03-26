@@ -55,9 +55,9 @@ class LobbyController < ApplicationController
           u.status = 'playing'
           u.save
         end
-      end
         room.status = 'playing'
         room.save
+      end
       render json: {status: 'success'}
     else
       render json: {status: 'fail'}, status: :bad_request
