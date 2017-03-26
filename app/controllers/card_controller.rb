@@ -19,6 +19,8 @@ class CardController < ApplicationController
     if card_name == 'Steal'
       #steal a random card from your selected user
       if remove_card(@current_user, 'Steal')
+        print 'ssssss'
+      end
     elsif card_name == 'Deny'
       if remove_card(@current_user, 'Deny')
       print 'Deny'
