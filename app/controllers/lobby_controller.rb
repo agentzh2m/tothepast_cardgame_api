@@ -43,18 +43,13 @@ class LobbyController < ApplicationController
       room.turn_counter = 0
       if state.size == 4
         players = room.users.to_a.map{ |u| Player.create(user: u)}
-        # add the initial card to all user
         rand = Random.new(1234)
-        players.each_with_index do |p, i|
+        players.to_a.each_with_index do |p, i|
           p.seqid = i
           0.upto(3) do |_|
-            p.card.push(Card.find(rand(1..Card.count)))
+            p.card.push(Card.find(rand(1..Card.count)).name)
           end
-          if p.save
-            render json: {status: 'success'}
-          else
-            render json: {status: 'fail', msg: 'cannot save the player state'}, status: :bad_request
-          end 
+          p.save
         end
         room.users.each do |u|
           u.status = 'playing'
