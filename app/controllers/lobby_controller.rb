@@ -34,7 +34,7 @@ class LobbyController < ApplicationController
 
   def ready
     if @current_user.status.nil?
-      render json: {status: 'fail'}, :bad_request
+      render json: {status: 'fail'}, status: :bad_request
     end
     @current_user.status = 'ready'
     if @current_user.save
@@ -53,7 +53,7 @@ class LobbyController < ApplicationController
           if p.save
             render json: {status: 'success'}
           else
-            render json: {status: 'fail', msg: 'cannot save the player state'}
+            render json: {status: 'fail', msg: 'cannot save the player state'}, status: :bad_request
         end
         room.users.each do |u|
           u.status = 'playing'
