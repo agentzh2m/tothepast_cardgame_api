@@ -9,18 +9,22 @@ Rails.application.routes.draw do
   delete "users/logout"
   post "users/register"
 
-  #lobby operation
+  # lobby operation
   get "lobby/join/:id", to: 'lobby#join'
   get "lobby/exit"
   get "lobby/ready"
   get "lobby/unready"
   get "lobby/check_allready"
 
-  #game operation
+  # game operation
   get "game/is_in_game"
   get "game/turn_state"
   get "game/end_turn"
   get "game/draw_card"
   get "game/exit_room"
+
+  # card operation
+  post "card/use"
+  post "card/buy"
 
 end
