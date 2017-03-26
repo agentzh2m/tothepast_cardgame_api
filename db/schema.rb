@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325143155) do
+ActiveRecord::Schema.define(version: 20170326062435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,11 @@ ActiveRecord::Schema.define(version: 20170325143155) do
     t.string   "characer"
     t.integer  "gold"
     t.boolean  "isTurn"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "room_id"
+    t.string   "card",       default: [],              array: true
+    t.integer  "seqid"
     t.index ["room_id"], name: "index_players_on_room_id", using: :btree
     t.index ["user_id"], name: "index_players_on_user_id", using: :btree
   end
@@ -44,8 +46,9 @@ ActiveRecord::Schema.define(version: 20170325143155) do
   create_table "rooms", force: :cascade do |t|
     t.string   "status"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "turn_counter"
   end
 
   create_table "special_cards", force: :cascade do |t|
