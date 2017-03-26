@@ -2,16 +2,16 @@
 #
 # Table name: players
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  characer   :string
-#  gold       :integer
-#  isTurn     :boolean
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  room_id    :integer
-#  card       :string           default("{}"), is an Array
-#  seqid      :integer
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  gold           :integer
+#  isTurn         :boolean
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  room_id        :integer
+#  card           :string           default("{}"), is an Array
+#  seqid          :integer
+#  character_name :string
 #
 
 class Player < ApplicationRecord

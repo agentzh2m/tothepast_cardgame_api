@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326062435) do
+ActiveRecord::Schema.define(version: 20170326081209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 20170326062435) do
 
   create_table "players", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "characer"
     t.integer  "gold"
     t.boolean  "isTurn"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "room_id"
-    t.string   "card",       default: [],              array: true
+    t.string   "card",           default: [],              array: true
     t.integer  "seqid"
+    t.string   "character_name"
     t.index ["room_id"], name: "index_players_on_room_id", using: :btree
     t.index ["user_id"], name: "index_players_on_user_id", using: :btree
   end

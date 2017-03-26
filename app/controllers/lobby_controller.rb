@@ -52,6 +52,10 @@ class LobbyController < ApplicationController
           end
           p.save
         end
+        room.users.each do |u|
+          u.status = nil
+          u.save
+        end
       end
         room.status = 'playing'
         room.save

@@ -20,8 +20,14 @@ class GameController < ApplicationController
     if room.status == 'playing'
       players = room.players
       check_turn = is_my_turn(room, @current_user)
-      whose_turn = players.select{|p| room.turn_counter % 4 == p.seqid}.first
-      render json: {is_my_turn: check_turn, my_card: @current_user.card, whose_turn: whose_turn player_state: players}
+      p_state = players.select{|p| @current_user.player != p}
+      p_state = p_state.map{|p| {
+        name: User.find(p.user_id),
+        is_turn: room.turn_counter % 4 == p.seqid,
+        num_card: p.card.size
+      }}
+      # p_turn = players.select{|p| room.turn_counter % 4 == p.seqid}.first
+      render json: {is_my_turn: check_turn, my_card: @current_user.card, other_player_state: p_state }
     else
       render json: {status: 'fail'}, status: :bad_request
     end
@@ -51,6 +57,25 @@ class GameController < ApplicationController
     else
       render json: {status: 'fail'}, status: :bad_request
     end
+  end
+
+  def exit_room
+    room = Room.find(@current_user.room_id)
+    if room.status == 'playing'
+      room.users do |u|
+        u.player.destroy
+        u.player = nil
+        u.status = 'unready'
+        u.save
+      end
+      room.status = 'waiting'
+      room.turn_counter = nil
+      room.save
+      render json: {status: 'success', msg: 'successfully kick everyone out'}
+    else
+      render json: {status: 'fail', msg: 'you are not playing'}, status: :bad_request
+    end
+  end
   end
 
 end

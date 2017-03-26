@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   get "lobby/unready"
   get "lobby/check_allready"
 
+  #game operation
+  get "game/turn_state"
+  get "game/end_turn"
+  get "game/draw_card"
+  get "game/exit_room"
+
 end
