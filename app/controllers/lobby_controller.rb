@@ -47,6 +47,7 @@ class LobbyController < ApplicationController
         characters = Character.all.to_a
         players.to_a.each_with_index do |p, i|
           p.seqid = i
+          p.gold = 2
           0.upto(3) do |_|
             p.card.push(Card.find(rand(1..Card.count)).name)
           end
