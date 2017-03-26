@@ -17,7 +17,7 @@ class CardController < ApplicationController
     card_name = params[:card_name]
     user_id = params[:user_id]
     if card_name == 'Steal'
-      #remove from a random user
+      #steal a random card from your selected user
       if remove_card(@current_user, 'Steal')
     elsif card_name == 'Deny'
       if remove_card(@current_user, 'Deny')

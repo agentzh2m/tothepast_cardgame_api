@@ -50,13 +50,9 @@ class LobbyController < ApplicationController
           0.upto(3) do |_|
             p.card.push(Card.find(rand(1..Card.count)).name)
           end
-          p.characters = characters.pop
+          p.character_name = characters.pop
           p.save
         end
-        # room.users.each do |u|
-        #   u.status = 'playing'
-        #   u.save
-        # end
         room.status = 'playing'
         room.save
       end
