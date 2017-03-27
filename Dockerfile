@@ -1,6 +1,6 @@
 FROM ruby:2.4.0
 
-RUN apt update
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 WORKDIR /api
 ENV RAILS_ENV=production
