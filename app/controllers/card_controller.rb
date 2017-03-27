@@ -4,7 +4,7 @@ class CardController < ApplicationController
   respond_to :json
 
   def remove_card(user, card_name)
-    if a.index(card_name).nil?
+    if user.player.card.index(card_name).nil?
       return false
     else
       user.card.delete_at(a.index(card_name))
