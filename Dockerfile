@@ -3,7 +3,7 @@ FROM ruby:2.4.0
 RUN apt update
 
 WORKDIR /api
-ENV RAILS_ENV =production
+ENV RAILS_ENV=production
 
 ADD Gemfile /api/Gemfile
 ADD Gemfile.lock /api/Gemfile.lock
