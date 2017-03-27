@@ -1,16 +1,18 @@
 # To the past API Server
 
-* Ruby version
+Worapol Boontanonda 5780431, Nattakarn Klongyut 5780130
 
-* System dependencies
+TO RUN
+  * `rake db:create db:migrate db:seed`
+  * `rails s`
 
-* Configuration
+Access through `localhost:3000`
 
-* How to run the test suite
-
-* Deployment instructions
+UML diagram in the `doc/model_complete.svg` directory
 
 ---
+
+## Incomplete doc [Ask Ham instead]
 
 [POST] `users/login`
 
