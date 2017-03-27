@@ -7,7 +7,7 @@ class CardController < ApplicationController
     if user.player.card.index(card_name).nil?
       return false
     else
-      user.player.card.delete_at(a.index(card_name))
+      user.player.card.delete_at(user.player.card.index(card_name))
       user.save
     end
   end
