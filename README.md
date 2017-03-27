@@ -3,7 +3,9 @@
 Worapol Boontanonda 5780431, Nattakarn Klongyut 5780130
 
 TO RUN
+
   - `rake db:create db:migrate db:seed`
+
   - `rails s`
 
 Access through `localhost:3000`
